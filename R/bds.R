@@ -52,17 +52,17 @@
 ##'   overrd <- c("START_DT"="20150101", "END_DT"="20160101")
 ##'   bds("CPI YOY Index","ECO_RELEASE_DT_LIST", overrides = overrd)
 ##' }
-bds <- function(security, field, options=NULL,
+bds <- function(securities, field, options=NULL,
                 overrides=NULL, verbose=FALSE,
                 identity=defaultAuthentication(), con=defaultConnection(),
                 simplify=getOption("blpSimplify", TRUE)) {
-    if (length(security) != 1L)
-        stop("more than one security submitted.", call.=FALSE)
     if (length(field) != 1L)
         stop("more than one field submitted.", call.=FALSE)
-    res <- bds_Impl(con, security, field, options, overrides, verbose, identity)
+    res <- bds_Impl(con, securities, field, options, overrides, verbose, identity)
     if (typeof(res)=="list" && length(res)==1 && simplify) {
         res <- res[[1]]
     }
     res
 }
+
+bds(securities=c("VOD LN Equity","AAPL US Equity"),field="EARN_ANN_DT_TIME_HIST_WITH_EPS")
