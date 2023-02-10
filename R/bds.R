@@ -64,5 +64,3 @@ bds <- function(securities, field, options=NULL,
     }
     res
 }
-
-bds(securities=c("VOD LN Equity","AAPL US Equity"),field="EARN_ANN_DT_TIME_HIST_WITH_EPS")
